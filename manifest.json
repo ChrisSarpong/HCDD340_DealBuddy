@@ -1,0 +1,7 @@
+{
+    "name": "Deal Buddy Final Project",
+    "short_name": "Deal Buddy",
+    "description": "Progressive Web App for Finding Cheap Drink Deals in State College, PA",
+    "start_url": "/",
+    "display": "minimal-ui"
+}
