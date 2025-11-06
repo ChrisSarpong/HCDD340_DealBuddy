@@ -33,3 +33,4 @@ Specific Bar Pages:
 - name of bar
 - address of bar
 - (Maybe a picture of bar)
+- Report a new deal
