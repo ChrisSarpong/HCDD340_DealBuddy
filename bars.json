@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Doggie's Pub",
+        "deal": "$2 wells until 11PM",
+        "image": "doggies.jpeg"
+    },
+
+    {
+        "name": "Bill Pickles Tap Room",
+        "deal": "",
+        "image": "pickles.jpeg"
+    },
+
+    {
+        "name": "Champs Downtown",
+        "deal": "",
+        "image": "champs.jpg"
+    },
+
+    {
+        "name": "The Shandygaff",
+        "deal": "",
+        "image": "gaff.jpg"
+    },
+
+    {
+        "name": "Cafe 210",
+        "deal": "",
+        "image": "cafe210.jpg"
+    },
+
+    {
+        "name": "The Phyrst",
+        "deal": "",
+        "image": "phyrst.jpg"
+    },
+
+    {
+        "name": "The Den",
+        "deal": "",
+        "image": "den.jpg"
+    },
+
+    {
+        "name": "Sharkies Bar",
+        "deal": "",
+        "image": "sharkies.jpeg"
+    },
+
+    {
+        "name": "Primanti Brothers",
+        "deal": "",
+        "image": "pmans.jpg"
+    },
+
+    {
+        "name": "Brothers Bar and Grill",
+        "deal": "",
+        "image": "brothers.jpg"
+    },
+
+    {
+        "name": "Antifragile Brewing Company",
+        "deal": "",
+        "image": "antifragile.jpg"
+    },
+
+    {
+        "name": "A's Pub",
+        "deal": "",
+        "image": "aspub.jpg"
+    },
+
+    {
+        "name": "Stage West",
+        "deal": "",
+        "image": "stagewest.jpg"
+    },
+
+    {
+        "name": "The Brewery",
+        "deal": "",
+        "image": "brew.jpeg"
+    },
+
+    {
+        "name": "Zeno's Pub",
+        "deal": "",
+        "image": "zenos.png"
+    }
+
+]
