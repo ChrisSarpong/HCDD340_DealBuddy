@@ -1,43 +1,43 @@
 [
     {
         "name": "Doggie's Pub",
-        "deal": "$2 wells until 11PM",
+        "deal": "Thursdays: $5 24oz Monster Island",
         "image": "doggies.jpeg"
     },
 
     {
         "name": "Bill Pickles Tap Room",
-        "deal": "",
+        "deal": "Tuesday - Saturday: $3 Well Liquors",
         "image": "pickles.jpeg"
     },
 
     {
         "name": "Champs Downtown",
-        "deal": "",
+        "deal": "Thursday: $1 Vodka Soda, $2 Dirty Sprite",
         "image": "champs.jpg"
     },
 
     {
         "name": "The Shandygaff",
-        "deal": "",
+        "deal": "Wednesday: $6 32oz Liquor Pitcher",
         "image": "gaff.jpg"
     },
 
     {
         "name": "Cafe 210",
-        "deal": "",
+        "deal": "Monday & Thursday: $5 Tea Pitcher",
         "image": "cafe210.jpg"
     },
 
     {
         "name": "The Phyrst",
-        "deal": "",
+        "deal": "Thursday: $8 Purple Gatorade Pitcher",
         "image": "phyrst.jpg"
     },
 
     {
         "name": "The Den",
-        "deal": "",
+        "deal": "Friday: $3 Long Islands",
         "image": "den.jpg"
     },
 
@@ -67,7 +67,7 @@
 
     {
         "name": "A's Pub",
-        "deal": "",
+        "deal": "Monday - Saturday: 1/2 Off Drafts",
         "image": "aspub.jpg"
     },
 
