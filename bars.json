@@ -43,25 +43,25 @@
 
     {
         "name": "Sharkies Bar",
-        "deal": "",
+        "deal": "Everyday: $15 PBR buckets",
         "image": "sharkies.jpeg"
     },
 
     {
         "name": "Primanti Brothers",
-        "deal": "",
+        "deal": "Thursday: $1 Singles",
         "image": "pmans.jpg"
     },
 
     {
         "name": "Brothers Bar and Grill",
-        "deal": "",
+        "deal": "Thursday: $1 Well Drinks",
         "image": "brothers.jpg"
     },
 
     {
         "name": "Antifragile Brewing Company",
-        "deal": "",
+        "deal": "-----",
         "image": "antifragile.jpg"
     },
 
@@ -73,19 +73,19 @@
 
     {
         "name": "Stage West",
-        "deal": "",
+        "deal": "-----",
         "image": "stagewest.jpg"
     },
 
     {
         "name": "The Brewery",
-        "deal": "",
+        "deal": "Friday: $5 Ashtray Shots",
         "image": "brew.jpeg"
     },
 
     {
         "name": "Zeno's Pub",
-        "deal": "",
+        "deal": "Everyday: Happyhour 8-12 Half-Off Drinks",
         "image": "zenos.png"
     }
 
