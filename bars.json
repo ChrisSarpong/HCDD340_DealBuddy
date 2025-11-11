@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Doggie's Pub",
+        "deal": "Thursdays: $5 24oz Monster Island",
+        "image": "doggies.jpeg"
+    },
+
+    {
+        "name": "Bill Pickles Tap Room",
+        "deal": "Tuesday - Saturday: $3 Well Liquors",
+        "image": "pickles.jpeg"
+    },
+
+    {
+        "name": "Champs Downtown",
+        "deal": "Thursday: $1 Vodka Soda, $2 Dirty Sprite",
+        "image": "champs.jpg"
+    },
+
+    {
+        "name": "The Shandygaff",
+        "deal": "Wednesday: $6 32oz Liquor Pitcher",
+        "image": "gaff.jpg"
+    },
+
+    {
+        "name": "Cafe 210",
+        "deal": "Monday & Thursday: $5 Tea Pitcher",
+        "image": "cafe210.jpg"
+    },
+
+    {
+        "name": "The Phyrst",
+        "deal": "Thursday: $8 Purple Gatorade Pitcher",
+        "image": "phyrst.jpg"
+    },
+
+    {
+        "name": "The Den",
+        "deal": "Friday: $3 Long Islands",
+        "image": "den.jpg"
+    },
+
+    {
+        "name": "Sharkies Bar",
+        "deal": "",
+        "image": "sharkies.jpeg"
+    },
+
+    {
+        "name": "Primanti Brothers",
+        "deal": "",
+        "image": "pmans.jpg"
+    },
+
+    {
+        "name": "Brothers Bar and Grill",
+        "deal": "",
+        "image": "brothers.jpg"
+    },
+
+    {
+        "name": "Antifragile Brewing Company",
+        "deal": "",
+        "image": "antifragile.jpg"
+    },
+
+    {
+        "name": "A's Pub",
+        "deal": "Monday - Saturday: 1/2 Off Drafts",
+        "image": "aspub.jpg"
+    },
+
+    {
+        "name": "Stage West",
+        "deal": "",
+        "image": "stagewest.jpg"
+    },
+
+    {
+        "name": "The Brewery",
+        "deal": "",
+        "image": "brew.jpeg"
+    },
+
+    {
+        "name": "Zeno's Pub",
+        "deal": "",
+        "image": "zenos.png"
+    }
+
+]
