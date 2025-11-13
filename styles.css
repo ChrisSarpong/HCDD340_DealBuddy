@@ -53,7 +53,7 @@
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #f1f1f1;
   display: block;
 }
 
@@ -76,3 +76,52 @@
   .sidenav a {font-size: 18px;}
 
 }
+
+ @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #121212;
+      color: #e5e5e5;
+      margin: 0;
+    }
+
+    .container { 
+      text-align: center;
+      margin-top: 60px;
+      background-color: #1e1e1e;
+      padding: 30px;
+    }
+
+    .button, .buttons {
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      cursor: pointer;
+    }
+
+    .button:hover, .buttons:hover {
+      background-color: #a80000;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 160px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #000;
+      padding-top: 20px;
+    }
+
+    .sidenav a {
+      color: #bdbdbd;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .sidenav a:hover {
+      color: white;
+    }
+
+    }
