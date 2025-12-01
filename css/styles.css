@@ -1,15 +1,16 @@
-.container { 
-    /* center this lower on page */
+.container {
+  /* center this lower on page */
   text-align: center;
   margin-top: 50px;
-  border:2px black solid;
+  border: 2px black solid;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;  
-    height: 350px;
+  justify-content: center;
+  height: 350px;
 }
-.button, .buttons {
+.button,
+.buttons {
   background-color: red;
   border: none;
   color: white;
@@ -20,7 +21,8 @@
   font-size: 16px;
   cursor: pointer;
 }
-.button:hover, .buttons:hover {
+.button:hover,
+.buttons:hover {
   background-color: darkred;
 }
 /* Style the side navigation */
@@ -37,16 +39,15 @@
 }
 
 .profile {
-    
   text-align: left;
   margin-top: 50px;
-  border:2px black solid;
+  border: 2px black solid;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
   height: 200px;
-}   
+}
 
 /* The navigation menu links */
 .sidenav a {
@@ -67,61 +68,99 @@
   margin-left: 160px; /* Same as the width of the sidebar */
   padding: 0px 10px;
 }
-.locations-container { 
+.locations-container {
   text-align: center;
 }
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-
+/* Search Bar Informaiton Below */
+.search-bar {
+  text-align: center;
+  margin-top: 10px;
 }
 
- @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #121212;
-      color: #e5e5e5;
-      margin: 0;
-    }
+#suggestions {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  width: 200px;
+  max-height: 150px;
+  overflow-y: auto;
+  display: none; /* Hidden by default */
+}
 
-    .container { 
-      text-align: center;
-      margin-top: 60px;
-      background-color: #1e1e1e;
-      padding: 30px;
-    }
+#suggestions div {
+  padding: 8px;
+  cursor: pointer;
+}
 
-    .button, .buttons {
-      background-color: #cc0000;
-      color: white;
-      border: none;
-      padding: 12px 28px;
-      cursor: pointer;
-    }
+#suggestions div:hover {
+  background-color: #f0f0f0;
+}
 
-    .button:hover, .buttons:hover {
-      background-color: #a80000;
-    }
+.result-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-    .sidenav {
-      height: 100%;
-      width: 160px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-color: #000;
-      padding-top: 20px;
-    }
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
 
-    .sidenav a {
-      color: #bdbdbd;
-      padding: 10px 16px;
-      text-decoration: none;
-      display: block;
-    }
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #e5e5e5;
+    margin: 0;
+  }
 
-    .sidenav a:hover {
-      color: white;
-    }
+  .container {
+    text-align: center;
+    margin-top: 60px;
+    background-color: #1e1e1e;
+    padding: 30px;
+  }
 
-    }
+  .button,
+  .buttons {
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    cursor: pointer;
+  }
+
+  .button:hover,
+  .buttons:hover {
+    background-color: #a80000;
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    padding-top: 20px;
+  }
+
+  .sidenav a {
+    color: #bdbdbd;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .sidenav a:hover {
+    color: white;
+  }
+}

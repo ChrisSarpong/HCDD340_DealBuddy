@@ -83,3 +83,60 @@ async function fetchNearbyBars(lat, lon) {
     distance: f.properties.distance,
   }));
 }
+
+// Search Functionality
+
+let data = [];
+
+// Load JSON file
+fetch('/json/bars.json') // Replace with your actual file name
+  .then(response => response.json())
+  .then(json => data = json);
+
+const searchInput = document.getElementById('search-input');
+const suggestionsBox = document.getElementById('suggestions');
+const resultsBox = document.getElementById('results');
+
+// Show suggestions as user types
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase();
+  suggestionsBox.innerHTML = '';
+
+  if (query.length === 0) {
+    suggestionsBox.style.display = 'none';
+    return;
+  }
+
+  const matches = data.filter(item => item.name.toLowerCase().includes(query));
+
+  if (matches.length > 0) {
+    suggestionsBox.style.display = 'block';
+    matches.slice(0, 5).forEach(match => {
+      const div = document.createElement('div');
+      div.textContent = match.name;
+      div.addEventListener('click', () => {
+        searchInput.value = match.name;
+        suggestionsBox.style.display = 'none';
+      });
+      suggestionsBox.appendChild(div);
+    });
+  } else {
+    suggestionsBox.style.display = 'none';
+  }
+});
+
+// Handle search button click
+document.getElementById('search-button').addEventListener('click', () => {
+  const query = searchInput.value.toLowerCase();
+  const results = data.filter(item => item.name.toLowerCase().includes(query));
+
+resultsBox.innerHTML = results.map(r => `
+  <div class="result-item">
+    <img src="${r.image}" alt="${r.name}" style="width:100>${r.deal}</p>
+    </div>
+  </div>
+`).join('');
+
+});
+
+    
