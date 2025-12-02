@@ -121,6 +121,17 @@
   align-items: center;
   gap: 10px;
 }
+/* Homepage body  */
+.homepage-body {
+  background-image: url('/Pictures/Map.jpg');
+  margin: 0;
+  postion: fixed;
+}
+.homepage-body .container {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 10px; 
+}
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {

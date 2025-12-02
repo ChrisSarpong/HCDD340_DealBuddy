@@ -85,13 +85,9 @@ async function fetchNearbyBars(lat, lon) {
 }
 
 // Search Functionality
-
-let data = [];
-
 // Load JSON file
-fetch('/json/bars.json') // Replace with your actual file name
-  .then(response => response.json())
-  .then(json => data = json);
+const jsonEl = document.getElementById('bars');
+const data = JSON.parse(jsonEl.textContent).bars;
 
 const searchInput = document.getElementById('search-input');
 const suggestionsBox = document.getElementById('suggestions');
@@ -132,7 +128,7 @@ document.getElementById('search-button').addEventListener('click', () => {
 
 resultsBox.innerHTML = results.map(r => `
   <div class="result-item">
-    <img src="${r.image}" alt="${r.name}" style="width:100>${r.deal}</p>
+    <img src="${r.image}" alt="${r.name}" style="width:100px;">${r.deal}</p>
     </div>
   </div>
 `).join('');
