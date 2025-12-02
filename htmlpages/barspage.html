@@ -4,18 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DealBuddy</title>
- <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
     <link rel="manifest" href="/json/manifest.json" />
   </head>
-    <body>
-      <div class="sidenav">
-      <a href="#">Profile</a>
-      <a href="#">Search</a>
-      </div>
+  
+  <body>
+    <div class="sidenav">
+      <a href="/htmlpages/profilepage.html">Profile</a>
+      <a href="/htmlpages/searchpage.html">Search</a>
+    </div>
 
-      
-      
-    </body>
-    <script src="/js/scripts.js" defer></script>
+    <div class="container2">
+
+      <!-- Dropdown -->
+      <select id="bar-selector" class="buttons" style="width:250px; margin-bottom:20px;">
+        <option value="">Select a Bar</option>
+      </select>
+
+      <!-- Dynamic Bar Info -->
+      <img id="bar-image" src="" alt="" style="width:250px; height:auto; border-radius:10px; display:none;" />
+      <h2 id="bar-name"></h2>
+      <p id="bar-deal"></p>
+
+    </div>
+
+    <script src="/js/bars.js" defer></script>
   </body>
 </html>
