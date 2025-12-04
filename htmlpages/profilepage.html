@@ -3,23 +3,80 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DealBuddy</title>
-     <link rel="stylesheet" href="/css/styles.css" />
+    <title>DealBuddy – Profile</title>
+    <link rel="stylesheet" href="/css/styles.css" />
     <link rel="manifest" href="/json/manifest.json" />
   </head>
   <body>
-     <div class="sidenav">
+    <div class="sidenav">
       <a href="/htmlpages/homepage.html">Home</a>
       <a href="/htmlpages/profilepage.html">Profile</a>
       <a href="/htmlpages/searchpage.html">Search</a>
       <a href="/htmlpages/barspage.html">Bars</a>
     </div>
-<div class = "profile">
-<h1>User page</h1>
 
+    <main class="profile">
+      <section class="profile-header">
+        <div class="profile-avatar">
+          <span>AW</span>
+        </div>
 
-</div>
-    </body>
+        <div class="profile-info">
+          <h1 class="profile-name">Aryan Walanj</h1>
+          <p class="profile-username">@aryan.w</p>
+          <p class="profile-bio">
+            Your average deal hunter here @ State College :)
+
+          <div class="profile-actions">
+            <button class="button">Edit Profile</button>
+            <button class="buttons">Log Out</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="profile-stats">
+        <div class="profile-stat">
+          <span class="stat-label">Deals Found</span>
+          <span class="stat-value">23</span>
+        </div>
+        <div class="profile-stat">
+          <span class="stat-label">Favourite Bars</span>
+          <span class="stat-value">5</span>
+        </div>
+        <div class="profile-stat">
+          <span class="stat-label">City</span>
+          <span class="stat-value">State College, PA</span>
+        </div>
+      </section>
+
+      <section class="profile-sections">
+        <div class="profile-card">
+          <h2>Favourite Bars</h2>
+          <ul class="profile-list">
+            <li>Bar Bleu</li>
+            <li>The Phyrst</li>
+            <li>Doggie's Pub</li>
+            <li>Pickle’s</li>
+          </ul>
+        </div>
+
+        <div class="profile-card">
+          <h2>Recent Deals Saved</h2>
+          <ul class="profile-list profile-deals">
+            <li>
+              <strong>$3 Drafts</strong> · Bar Bleu · Thursdays 8–11 PM
+            </li>
+            <li>
+              <strong>2-for-1 Margaritas</strong> · The Phyrst · Tuesdays 7–10 PM
+            </li>
+            <li>
+              <strong>$5 Long Islands</strong> · Doggie's Pub · Fridays 9–11 PM
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
     <script src="/js/scripts.js" defer></script>
   </body>
 </html>
