@@ -5,6 +5,7 @@ fetch("/json/bars.json")
     const barImage = document.getElementById("bar-image");
     const barName = document.getElementById("bar-name");
     const barDeal = document.getElementById("bar-deal");
+    const newDealSection = document.getElementById("new-deal-section");
 
     // Populate dropdown
     bars.forEach(bar => {
@@ -20,17 +21,21 @@ fetch("/json/bars.json")
       const bar = bars.find(b => b.name === selected);
 
       if (bar) {
-        // FIXED: correct image directory
         barImage.src = "/Bar Pictures/" + bar.image;
         barImage.style.display = "block";
 
         barName.textContent = bar.name;
         barDeal.textContent = bar.deal;
+
+        // Show New Deal input section
+        newDealSection.style.display = "block";
       } else {
-        // Reset fields
         barImage.style.display = "none";
         barName.textContent = "";
         barDeal.textContent = "";
+
+        // Hide New Deal input section
+        newDealSection.style.display = "none";
       }
     });
   });

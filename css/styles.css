@@ -192,3 +192,21 @@
     color: white;
   }
 }
+
+.deal-label {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.deal-input {
+  width: 250px;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.add-deal-btn {
+  margin-top: 15px;
+  width: 250px;
+}
