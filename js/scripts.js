@@ -86,53 +86,96 @@ async function fetchNearbyBars(lat, lon) {
 
 // Search Functionality
 // Load JSON file
-const jsonEl = document.getElementById('bars');
-const data = JSON.parse(jsonEl.textContent).bars;
-
-const searchInput = document.getElementById('search-input');
-const suggestionsBox = document.getElementById('suggestions');
-const resultsBox = document.getElementById('results');
-
-// Show suggestions as user types
-searchInput.addEventListener('input', () => {
-  const query = searchInput.value.toLowerCase();
-  suggestionsBox.innerHTML = '';
-
-  if (query.length === 0) {
-    suggestionsBox.style.display = 'none';
+// ----------------- Search Functionality (embedded JSON, no fetch/server) -----------------
+document.addEventListener('DOMContentLoaded', () => {
+  const jsonEl = document.getElementById('bars');
+  if (!jsonEl) {
+    console.error('bars JSON script block not found.');
     return;
   }
 
-  const matches = data.filter(item => item.name.toLowerCase().includes(query));
-
-  if (matches.length > 0) {
-    suggestionsBox.style.display = 'block';
-    matches.slice(0, 5).forEach(match => {
-      const div = document.createElement('div');
-      div.textContent = match.name;
-      div.addEventListener('click', () => {
-        searchInput.value = match.name;
-        suggestionsBox.style.display = 'none';
-      });
-      suggestionsBox.appendChild(div);
-    });
-  } else {
-    suggestionsBox.style.display = 'none';
+  let data = [];
+  try {
+    const parsed = JSON.parse(jsonEl.textContent);
+    data = Array.isArray(parsed.bars) ? parsed.bars : [];
+  } catch (err) {
+    console.error('Failed to parse embedded bars JSON:', err);
+    return;
   }
-});
 
-// Handle search button click
-document.getElementById('search-button').addEventListener('click', () => {
-  const query = searchInput.value.toLowerCase();
-  const results = data.filter(item => item.name.toLowerCase().includes(query));
+  const searchInput = document.getElementById('search-input');
+  const suggestionsBox = document.getElementById('suggestions');
+  const resultsBox = document.getElementById('results');
+  const searchButton = document.getElementById('search-button');
 
-resultsBox.innerHTML = results.map(r => `
-  <div class="result-item">
-    <img src="${r.image}" alt="${r.name}" style="width:100px;">${r.deal}</p>
+  if (!searchInput || !suggestionsBox || !resultsBox || !searchButton) {
+    console.error('One or more required elements are missing in the HTML.');
+    return;
+  }
+  // Render results
+const renderResults = (list) => {
+  if (!Array.isArray(list) || !list.length) {
+    resultsBox.innerHTML = '<p>No results found.</p>';
+    return;
+  }
+
+  resultsBox.innerHTML = list.map(r => `
+    <div class="result-item">
+      ${r.image}
+      <div class="result-details">
+        <h4>${r.name}</h4>
+        <p>${r.deal}</p>
+      </div>
     </div>
-  </div>
-`).join('');
+  `).join('');
+};
 
+
+
+  // Suggestions
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase().trim();
+    suggestionsBox.innerHTML = '';
+
+    if (!query) {
+      suggestionsBox.style.display = 'none';
+      return;
+    }
+
+    const matches = data.filter(item => item.name.toLowerCase().includes(query)).slice(0, 5);
+
+    if (matches.length) {
+      suggestionsBox.style.display = 'block';
+      matches.forEach(match => {
+        const div = document.createElement('div'); // styled via #suggestions div in styles.css
+        div.textContent = match.name;
+        div.addEventListener('click', () => {
+          searchInput.value = match.name;
+          suggestionsBox.style.display = 'none';
+          renderResults([match]);
+        });
+        suggestionsBox.appendChild(div);
+      });
+    } else {
+      suggestionsBox.style.display = 'none';
+    }
+  });
+
+  // Search button
+  searchButton.addEventListener('click', () => {
+    const query = searchInput.value.toLowerCase().trim();
+    const results = data.filter(item => item.name.toLowerCase().includes(query));
+    suggestionsBox.style.display = 'none';
+    renderResults(results);
+  });
+
+  // Hide suggestions when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!suggestionsBox.contains(e.target) && e.target !== searchInput) {
+      suggestionsBox.style.display = 'none';
+    }
+  });
+
+  // Initial render (optional): show all bars
+  renderResults(data);
 });
-
-    
