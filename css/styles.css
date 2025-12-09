@@ -378,6 +378,20 @@ body {
   border-color: #fa4f3b;
   box-shadow: 0 0 0 3px rgba(250, 79, 59, 0.18);
 }
+/* Test for mappign feature */
+.map-card {
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 3px 10px rgba(0,0,0,.05);
+  overflow: hidden;
+}
+
+#map {
+  height: 480px;
+  width: 100%;
+}
+
 
 
 @media screen and (max-width: 800px) {

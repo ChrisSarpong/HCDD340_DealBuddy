@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('One or more required elements are missing in the HTML.');
     return;
   }
-  // Render results
+// Render results
 const renderResults = (list) => {
   if (!Array.isArray(list) || !list.length) {
     resultsBox.innerHTML = '<p>No results found.</p>';
@@ -121,14 +121,14 @@ const renderResults = (list) => {
 
   resultsBox.innerHTML = list.map(r => `
     <div class="result-item">
-      ${r.image}
-      <div class="result-details">
+      <img src="${r.image}" alt="${r.name}"etails">
         <h4>${r.name}</h4>
         <p>${r.deal}</p>
       </div>
     </div>
   `).join('');
 };
+
 
 
 
@@ -160,6 +160,67 @@ const renderResults = (list) => {
       suggestionsBox.style.display = 'none';
     }
   });
+
+// Helper to help with the spelling of the bard
+const normalize = (s) => (s || '')
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, '') // remove spaces and punctuation
+  .trim();
+
+// Search button
+searchButton.addEventListener('click', async () => {
+  const query = searchInput.value.toLowerCase().trim();
+
+  // Case 1: Query provided -> filter local JSON bars by name
+  if (query) {
+    const results = data.filter(item =>
+      item.name.toLowerCase().includes(query)
+    );
+    suggestionsBox.style.display = 'none';
+    renderResults(results);
+    return;
+  }
+
+  // Case 2: Empty query -> use location + Geoapify to show only nearby local bars
+  suggestionsBox.style.display = 'none';
+
+  try {
+    // 1) Get user location (HTML5 -> fallback to AbstractAPI)
+    const loc = await getUserLocation();              // already defined above
+    // 2) Fetch nearby bars from Geoapify
+    const apiBars = await fetchNearbyBars(loc.lat, loc.lon); // already defined above
+
+    // Build a lookup for quick matching & optional distance display
+    const nearbyNameSet = new Set();
+    const distanceByName = new Map();
+    apiBars.forEach(b => {
+      const key = normalize(b.name || '');
+      if (key) {
+        nearbyNameSet.add(key);
+        if (typeof b.distance === 'number') {
+          distanceByName.set(key, b.distance);
+        }
+      }
+    });
+
+    // Intersect API results with your local embedded JSON bars by name
+    const filtered = data.filter(item => nearbyNameSet.has(normalize(item.name)));
+
+    // Render the filtered local bars
+    renderResults(filtered);
+
+    // (Optional) If you want to display distance, we can extend renderResults
+    // to read distanceByName—tell me and I’ll drop that in.
+
+  } catch (err) {
+    console.error('❌ Nearby search failed:', err);
+    resultsBox.innerHTML = `
+      <p>Couldn’t fetch nearby bars right now. Showing all bars instead.</p>
+    `;
+    renderResults(data); // graceful fallback
+  }
+});
+
 
   // Search button
   searchButton.addEventListener('click', () => {

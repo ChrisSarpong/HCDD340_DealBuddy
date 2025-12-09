@@ -1,26 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head> 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DealBuddy</title>
-     <link rel="stylesheet" href="/css/styles.css" />
-    <link rel="manifest" href="/json/manifest.json" /> 
-  </head>
-  <body>
-    <div class="sidenav">
-      <a href="/htmlpages/homepage.html">Home</a>
-      <a href="/htmlpages/profilepage.html">Profile</a>
-      <a href="/htmlpages/searchpage.html">Search</a>
-      <a href="/htmlpages/barspage.html">Bars</a>
-    </div>
+<head>
+  <meta charset="utf-8" />
+  <title>DealBuddy — Bars Near You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/styles.css" />
 
-    <div class="locations-container">
-      <h1>Based on your Location here is what is near you</h1>
-      
-      </div>
-    </div>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <div class="sidenav">
+    <div class="brand">DealBuddy</div>
+    <a href="/htmlpages/homepage.html">Home</a>
+    <a href="/htmlpages/profilepage.html">Profile</a>
+    <a href="/htmlpages/searchpage.html">Search</a>
+    <a href="/htmlpages/barspage.html">Bars</a>
+    <a href="/htmlpages/loctionspage.html">Map</a>
+  </div>
 
-    <script src="/js/scripts.js" defer></script>
-  </body>
+  <main class="main">
+    <div class="container">
+      <h1>Bars Near You</h1>
+
+      <!-- Map container -->
+      <div id="map" style="height: 480px; width: 100%; border-radius: 12px;"></div>
+
+      <!-- (Optional) Add buttons later for “Use My Location” & “Plot Local JSON Bars” -->
+    </div>
+  </main>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+
+  <!-- Page JS: I left this in my HTML bc i dont know if this is going to be used, so to keep evething clean I left it here -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!window.L) {
+        console.error('Leaflet did not load. Check network and script order.');
+        return;
+      }
+      const map = L.map('map').setView([40.7934, -77.8600], 14); // State College default
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+    });
+  </script>
+  <script src="/js/mapping.js" defer></script>
+</body>
 </html>
