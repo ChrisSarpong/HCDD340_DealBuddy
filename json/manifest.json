@@ -7,7 +7,7 @@
 
     "icons": [
         {
-            "src": "icons/DB-96.png",
+            "src": "/icons/DB-96.png",
             "sizes": "96x96"
         },
         {
