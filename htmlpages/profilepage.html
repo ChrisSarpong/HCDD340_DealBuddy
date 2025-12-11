@@ -18,8 +18,18 @@
 
     <main class="profile">
       <section class="profile-header">
-        <div class="profile-avatar">
-          <span>AW</span>
+        <div class="profile-avatar" id="profileAvatar">
+          <img
+            id="profileAvatarImg"
+            src="/Images/Portrait_Placeholder.png"
+            alt="Profile picture"
+          />
+
+          <span class="profile-avatar-initials">AW</span>
+
+          <div class="avatar-overlay">
+            <span class="avatar-add-icon">+</span>
+          </div>
         </div>
 
         <div class="profile-info">
@@ -27,6 +37,7 @@
           <p class="profile-username">@aryan.w</p>
           <p class="profile-bio">
             Your average deal hunter here @ State College :)
+          </p>
 
           <div class="profile-actions">
             <button class="button">Edit Profile</button>
@@ -78,6 +89,25 @@
       </section>
     </main>
 
-    <script src="/js/scripts.js" defer></script>
+    <script src="/js/profile.js" defer></script>
+    <div id="editProfileModal" class="modal-backdrop" style="display: none;">
+  <div class="modal">
+    <h2>Edit Profile</h2>
+
+    <label>Name</label>
+    <input type="text" id="editName" class="modal-input" />
+
+    <label>Username</label>
+    <input type="text" id="editUsername" class="modal-input" />
+
+    <label>Bio</label>
+    <textarea id="editBio" class="modal-textarea"></textarea>
+
+    <div class="modal-buttons">
+      <button id="saveProfileBtn" class="button">Save</button>
+      <button id="cancelProfileBtn" class="buttons">Cancel</button>
+    </div>
+  </div>
+</div>
   </body>
 </html>

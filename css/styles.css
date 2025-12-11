@@ -51,6 +51,7 @@ body {
 }
 
 .profile-avatar {
+  position: relative;
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -63,13 +64,59 @@ body {
   color: #fff;
   flex-shrink: 0;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .profile-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: none; 
 }
+
+.profile-avatar-initials {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.avatar-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.avatar-add-icon {
+  font-size: 28px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.profile-avatar:hover img {
+  display: block;
+}
+
+.profile-avatar:hover .profile-avatar-initials {
+  display: none;
+}
+
+.profile-avatar:hover .avatar-overlay {
+  opacity: 1;
+}
+
+.profile-avatar.has-image img {
+  display: block;
+}
+
+.profile-avatar.has-image .profile-avatar-initials {
+  display: none;
+}
+
 
 .profile-info {
   display: flex;
@@ -472,4 +519,96 @@ body {
     border-color: #fa4f3b;
     box-shadow: 0 0 0 3px rgba(250, 79, 59, 0.4);
   }
+  
+.camera-body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #101010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.camera-container {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 22px;
+  width: min(480px, 94vw);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.camera-title {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#cameraVideo,
+#cameraCanvas {
+  width: 100%;
+  border-radius: 12px;
+  background: #000;
+  max-height: 360px;
+  object-fit: cover;
+}
+
+.camera-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .camera-container {
+    background-color: #181818;
+    color: #f5f5f5;
+  }
+}
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  width: min(420px, 90vw);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+}
+
+.modal-input,
+.modal-textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.modal-textarea {
+  height: 80px;
+  resize: none;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
 }
