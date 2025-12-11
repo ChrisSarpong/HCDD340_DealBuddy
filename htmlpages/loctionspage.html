@@ -4,7 +4,9 @@
   <meta charset="utf-8" />
   <title>DealBuddy — Bars Near You</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" type="image/png" href="/icons/DB-128.png" />
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -23,31 +25,27 @@
     <div class="container">
       <h1>Bars Near You</h1>
 
-      <!-- Map container -->
+      <!-- Buttons your JS listens for -->
+      <div style="margin-bottom: 20px;">
+        <button id="use-location" class="tufte-button">Use My Location</button>
+        <!-- <button id="show-json" class="tufte-button">Show Local JSON Bars</button> 
+         Got rid of bc it could not funciton in accurate way -->
+      </div>
+
+      <!-- The map container -->
       <div id="map" style="height: 480px; width: 100%; border-radius: 12px;"></div>
 
-      <!-- (Optional) Add buttons later for “Use My Location” & “Plot Local JSON Bars” -->
+      <!-- Local JSON embedded as a hidden script (your JS expects this!) -->
+      <script id="bars" type="application/json">
+      </script>
+
     </div>
   </main>
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  
 
-  <!-- Page JS: I left this in my HTML bc i dont know if this is going to be used, so to keep evething clean I left it here -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      if (!window.L) {
-        console.error('Leaflet did not load. Check network and script order.');
-        return;
-      }
-      const map = L.map('map').setView([40.7934, -77.8600], 14); // State College default
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      }).addTo(map);
-    });
-  </script>
+  <!-- Your mapping logic -->
   <script src="/js/mapping.js" defer></script>
 </body>
 </html>

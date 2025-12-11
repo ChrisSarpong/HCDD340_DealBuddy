@@ -212,7 +212,7 @@ body {
 
 .button,
 .buttons,
-.add-deal-btn {
+.add-deal-btn,.tufte-button {
   background-color: #fa4f3b;          
   border: none;
   color: #ffffff;
@@ -231,7 +231,7 @@ body {
 
 .button:hover,
 .buttons:hover,
-.add-deal-btn:hover {
+.add-deal-btn:hover,.tufte-button:hover {
   background-color: #d83a28;
   box-shadow: 0 6px 16px rgba(216, 58, 40, 0.45);
   transform: translateY(-1px);

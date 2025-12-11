@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> 
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DealBuddy</title>
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="manifest" href="/json/manifest.json" />
+    <link rel="icon" type="image/png" href="/icons/DB-128.png" />
   </head>
   <body>
     <div class="sidenav">
@@ -15,47 +16,116 @@
       <a href="/htmlpages/searchpage.html">Search</a>
       <a href="/htmlpages/barspage.html">Bars</a>
     </div>
-   
-<main class="main">
-    <div class="container">
-      <h1>Search Bars</h1>
 
-      <div class="search-bar">
-        <label for="search-input" class="sr-only">Search bars</label>
-        <input id="search-input" type="text" placeholder="Search bars by name…" autocomplete="off" />
-        <button id="search-button" class="button" type="button">Search</button>
-        <label for="suggestions" class="sr-only">Double click to Search by Location</label>
-        <div id="suggestions" role="listbox" aria-label="Suggestions"></div>
-      </div>
+    <main class="main">
+      <div class="container">
+        <h1>Search Bars</h1>
 
-      <div id="results" aria-live="polite"></div>
-
-      <!-- Embed VALID JSON here -->
-      <script id="bars" type="application/json">
-{
-  "bars": [
-    { "name": "Doggie's Pub", "deal": "Thursdays: $5 24oz Monster Island", "image": "/Bar%20Pictures/doggies.jpeg" },
-    { "name": "Bill Pickles Tap Room", "deal": "Tuesday - Saturday: $3 Well Liquors", "image": "/Bar%20Pictures/pickles.jpeg" },
-    { "name": "Champs Downtown", "deal": "Thursday: $1 Vodka Soda, $2 Dirty Sprite", "image": "/Bar%20Pictures/champs.jpg" },
-    { "name": "The Shandygaff", "deal": "Wednesday: $6 32oz Liquor Pitcher", "image": "/Bar%20Pictures/gaff.jpg" },
-    { "name": "Cafe 210", "deal": "Monday & Thursday: $5 Tea Pitcher", "image": "/Bar%20Pictures/cafe210.jpg" },
-    { "name": "The Phyrst", "deal": "Thursday: $8 Purple Gatorade Pitcher", "image": "/Bar%20Pictures/phyrst.jpg" },
-    { "name": "The Den", "deal": "Friday: $3 Long Islands", "image": "/Bar%20Pictures/den.jpg" },
-    { "name": "Sharkies Bar", "deal": "Everyday: $15 PBR buckets", "image": "/Bar%20Pictures/sharkies.jpeg" },
-    { "name": "Primanti Brothers", "deal": "Thursday: $1 Singles", "image": "/Bar%20Pictures/pmans.jpg" },
-    { "name": "Brothers Bar and Grill", "deal": "Thursday: $1 Well Drinks", "image": "/Bar%20Pictures/brothers.jpg" },
-    { "name": "Antifragile Brewing Company", "deal": "—", "image": "/Bar%20Pictures/antifragile.jpg" },
-    { "name": "A's Pub", "deal": "Monday - Saturday: 1/2 Off Drafts", "image": "/Bar%20Pictures/aspub.jpg" },
-    { "name": "Stage West", "deal": "—", "image": "/Bar%20Pictures/stagewest.jpg" },
-    { "name": "The Brewery", "deal": "Friday: $5 Ashtray Shots", "image": "/Bar%20Pictures/brew.jpeg" },
-    { "name": "Zeno's Pub", "deal": "Everyday: Happy Hour 8–12 Half‑Off Drinks", "image": "/Bar%20Pictures/zenos.png" }
-  ]
-}
-        </script>
+        <div class="search-bar">
+          <label for="search-input" class="sr-only">Search bars</label>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search bars by name…"
+            autocomplete="off"
+          />
+          <button id="search-button" class="button" type="button">
+            Search
+          </button>
+          <label for="suggestions" class="sr-only"
+            >Double click to Search by Location</label
+          >
+          <div id="suggestions" role="listbox" aria-label="Suggestions"></div>
         </div>
-</main>
+
+        <div id="results" aria-live="polite"></div>
+
+        <!-- Embed VALID JSON here -->
+        <script id="bars" type="application/json">
+          {
+            "bars": [
+              {
+                "name": "Doggie's Pub",
+                "deal": "Thursdays: $5 24oz Monster Island",
+                "image": "/Bar%20Pictures/doggies.jpeg"
+              },
+              {
+                "name": "Bill Pickles Tap Room",
+                "deal": "Tuesday - Saturday: $3 Well Liquors",
+                "image": "/Bar%20Pictures/pickles.jpeg"
+              },
+              {
+                "name": "Champs Downtown",
+                "deal": "Thursday: $1 Vodka Soda, $2 Dirty Sprite",
+                "image": "/Bar%20Pictures/champs.jpg"
+              },
+              {
+                "name": "The Shandygaff",
+                "deal": "Wednesday: $6 32oz Liquor Pitcher",
+                "image": "/Bar%20Pictures/gaff.jpg"
+              },
+              {
+                "name": "Cafe 210",
+                "deal": "Monday & Thursday: $5 Tea Pitcher",
+                "image": "/Bar%20Pictures/cafe210.jpg"
+              },
+              {
+                "name": "The Phyrst",
+                "deal": "Thursday: $8 Purple Gatorade Pitcher",
+                "image": "/Bar%20Pictures/phyrst.jpg"
+              },
+              {
+                "name": "The Den",
+                "deal": "Friday: $3 Long Islands",
+                "image": "/Bar%20Pictures/den.jpg"
+              },
+              {
+                "name": "Sharkies Bar",
+                "deal": "Everyday: $15 PBR buckets",
+                "image": "/Bar%20Pictures/sharkies.jpeg"
+              },
+              {
+                "name": "Primanti Brothers",
+                "deal": "Thursday: $1 Singles",
+                "image": "/Bar%20Pictures/pmans.jpg"
+              },
+              {
+                "name": "Brothers Bar and Grill",
+                "deal": "Thursday: $1 Well Drinks",
+                "image": "/Bar%20Pictures/brothers.jpg"
+              },
+              {
+                "name": "Antifragile Brewing Company",
+                "deal": "—",
+                "image": "/Bar%20Pictures/antifragile.jpg"
+              },
+              {
+                "name": "A's Pub",
+                "deal": "Monday - Saturday: 1/2 Off Drafts",
+                "image": "/Bar%20Pictures/aspub.jpg"
+              },
+              {
+                "name": "Stage West",
+                "deal": "—",
+                "image": "/Bar%20Pictures/stagewest.jpg"
+              },
+              {
+                "name": "The Brewery",
+                "deal": "Friday: $5 Ashtray Shots",
+                "image": "/Bar%20Pictures/brew.jpeg"
+              },
+              {
+                "name": "Zeno's Pub",
+                "deal": "Everyday: Happy Hour 8–12 Half‑Off Drinks",
+                "image": "/Bar%20Pictures/zenos.png"
+              }
+            ]
+          }
+        </script>
+      </div>
+    </main>
     <script src="/js/scripts.js" defer></script>
   </body>
 </html>
- <!-- Change this to be a search by location, and when they click that a loading stat pops up for 5 or so second and then 
+<!-- Change this to be a search by location, and when they click that a loading stat pops up for 5 or so second and then 
   based on teh API all of the bars Cards pop up and maybe we can add a toggle state that make them bigger or in a caracell -->
