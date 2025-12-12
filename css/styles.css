@@ -253,10 +253,6 @@ body {
     color: #aaa;
   }
 }
-
-
-
-
 .button,
 .buttons,
 .add-deal-btn,.tufte-button {
@@ -343,17 +339,35 @@ body {
 }
 
 .result-item {
-  border-radius: 10px;
   border: 1px solid #ddd;
-  padding: 12px 14px;
-  margin: 10px 0;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: #fff;
   display: flex;
-  align-items: center;
-  gap: 10px;
-  background-color: #ffffff;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  flex-direction: column;
+  gap: 8px;
+  max-width: 600px; /* prevents super-wide cards */
 }
+/* Testing for search bar feature */
+@media (max-width: 600px) {
+  .result-item img {
+    max-height: 140px; /* smaller images on mobile */
+  }
 
+  .result-item {
+    padding: 10px;
+  }
+}
+@media (min-width: 900px) {
+  .result-item img {
+    max-height: 220px;
+  }
+
+  .result-item {
+    max-width: 700px;
+  }
+}
 
 
 .search-bar {
@@ -456,10 +470,22 @@ body {
   .main,
   .container,
   .container2,
-  .profile {
+  .profile,.brand {
     margin-left: 80px;
   }
+   .sidenav .brand {
+    font-size: 12px;            /* smaller text */
+    padding: 6px 8px;          /* reduced padding */
+    text-align: center;
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;   /* show ellipsis if truncated */
+    transition: font-size 0.12s ease, padding 0.12s ease;
+  }
 }
+
 
 @media screen and (max-height: 450px) {
   .sidenav {

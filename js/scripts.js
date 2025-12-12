@@ -84,8 +84,6 @@ async function fetchNearbyBars(lat, lon) {
   }));
 }
 
-// Search Functionality
-// Load JSON file
 // ----------------- Search Functionality (embedded JSON, no fetch/server) -----------------
 document.addEventListener('DOMContentLoaded', () => {
   const jsonEl = document.getElementById('bars');
@@ -112,25 +110,34 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('One or more required elements are missing in the HTML.');
     return;
   }
-// Render results
-const renderResults = (list) => {
-  if (!Array.isArray(list) || !list.length) {
-    resultsBox.innerHTML = '<p>No results found.</p>';
-    return;
-  }
 
-  resultsBox.innerHTML = list.map(r => `
-    <div class="result-item">
-      <img src="${r.image}" alt="${r.name}"etails">
-        <h4>${r.name}</h4>
-        <p>${r.deal}</p>
-      </div>
-    </div>
-  `).join('');
-};
+  // ----------------- UPDATED renderResults() WITH USER DEAL SUPPORT -----------------
+  const renderResults = (list) => {
+    if (!Array.isArray(list) || !list.length) {
+      resultsBox.innerHTML = '<p>No results found.</p>';
+      return;
+    }
 
+    resultsBox.innerHTML = list.map(r => {
+      const userDeals = mergeUserDeals(r); // load user-added deals
 
+      return `
+        <div class="result-item">
+          <img src="${r.image}" alt="${r.name}">
+          <h4>${r.name}</h4>
 
+          <p><strong>Official Deal:</strong> ${r.deal}</p>
+
+          ${userDeals.length ? `
+            <p><strong>User Deals:</strong></p>
+            <ul class="user-deals">
+              ${userDeals.map(d => `<li>${d}</li>`).join("")}
+            </ul>
+          ` : ""}
+        </div>
+      `;
+    }).join('');
+  };
 
   // Suggestions
   searchInput.addEventListener('input', () => {
@@ -147,7 +154,7 @@ const renderResults = (list) => {
     if (matches.length) {
       suggestionsBox.style.display = 'block';
       matches.forEach(match => {
-        const div = document.createElement('div'); // styled via #suggestions div in styles.css
+        const div = document.createElement('div'); 
         div.textContent = match.name;
         div.addEventListener('click', () => {
           searchInput.value = match.name;
@@ -161,68 +168,51 @@ const renderResults = (list) => {
     }
   });
 
-// Helper to help with the spelling of the bard
-const normalize = (s) => (s || '')
-  .toLowerCase()
-  .replace(/[^a-z0-9]+/g, '') // remove spaces and punctuation
-  .trim();
-
-// Search button
-searchButton.addEventListener('click', async () => {
-  const query = searchInput.value.toLowerCase().trim();
-
-  // Case 1: Query provided -> filter local JSON bars by name
-  if (query) {
-    const results = data.filter(item =>
-      item.name.toLowerCase().includes(query)
-    );
-    suggestionsBox.style.display = 'none';
-    renderResults(results);
-    return;
-  }
-
-  // Case 2: Empty query -> use location + Geoapify to show only nearby local bars
-  suggestionsBox.style.display = 'none';
-
-  try {
-    // 1) Get user location (HTML5 -> fallback to AbstractAPI)
-    const loc = await getUserLocation();              // already defined above
-    // 2) Fetch nearby bars from Geoapify
-    const apiBars = await fetchNearbyBars(loc.lat, loc.lon); // already defined above
-
-    // Build a lookup for quick matching & optional distance display
-    const nearbyNameSet = new Set();
-    const distanceByName = new Map();
-    apiBars.forEach(b => {
-      const key = normalize(b.name || '');
-      if (key) {
-        nearbyNameSet.add(key);
-        if (typeof b.distance === 'number') {
-          distanceByName.set(key, b.distance);
-        }
-      }
-    });
-
-    // Intersect API results with your local embedded JSON bars by name
-    const filtered = data.filter(item => nearbyNameSet.has(normalize(item.name)));
-
-    // Render the filtered local bars
-    renderResults(filtered);
-
-    // (Optional) If you want to display distance, we can extend renderResults
-    // to read distanceByName—tell me and I’ll drop that in.
-
-  } catch (err) {
-    console.error('❌ Nearby search failed:', err);
-    resultsBox.innerHTML = `
-      <p>Couldn’t fetch nearby bars right now. Showing all bars instead.</p>
-    `;
-    renderResults(data); // graceful fallback
-  }
-});
-
+  // Helper for normalizing names
+  const normalize = (s) => (s || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '')
+    .trim();
 
   // Search button
+  searchButton.addEventListener('click', async () => {
+    const query = searchInput.value.toLowerCase().trim();
+
+    if (query) {
+      const results = data.filter(item =>
+        item.name.toLowerCase().includes(query)
+      );
+      suggestionsBox.style.display = 'none';
+      renderResults(results);
+      return;
+    }
+
+    suggestionsBox.style.display = 'none';
+
+    try {
+      const loc = await getUserLocation();
+      const apiBars = await fetchNearbyBars(loc.lat, loc.lon);
+
+      const nearbyNameSet = new Set();
+      apiBars.forEach(b => {
+        const key = normalize(b.name || '');
+        if (key) nearbyNameSet.add(key);
+      });
+
+      const filtered = data.filter(item => nearbyNameSet.has(normalize(item.name)));
+
+      renderResults(filtered);
+
+    } catch (err) {
+      console.error('❌ Nearby search failed:', err);
+      resultsBox.innerHTML = `
+        <p>Couldn’t fetch nearby bars right now. Showing all bars instead.</p>
+      `;
+      renderResults(data);
+    }
+  });
+
+  // Secondary search listener (kept as-is)
   searchButton.addEventListener('click', () => {
     const query = searchInput.value.toLowerCase().trim();
     const results = data.filter(item => item.name.toLowerCase().includes(query));
@@ -237,6 +227,13 @@ searchButton.addEventListener('click', async () => {
     }
   });
 
-  // Initial render (optional): show all bars
+  // Show all bars initially
   renderResults(data);
 });
+
+// ----------------- Local Storage Deal Merge -----------------
+function mergeUserDeals(bar) {
+  const savedDeals = JSON.parse(localStorage.getItem("savedDeals")) || {};
+  const normalizedName = bar.name.trim();
+  return savedDeals[normalizedName] || [];
+}
